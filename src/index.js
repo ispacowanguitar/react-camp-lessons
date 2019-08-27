@@ -6,7 +6,7 @@ class CounterComponent extends React.Component {
     super(props);
 
     this.state = {
-      count: 0
+      count: props.initialCount
     };
   }
 
@@ -33,4 +33,15 @@ class CounterComponent extends React.Component {
   }
 }
 
-ReactDOM.render(<CounterComponent />, document.getElementById("root"));
+const Counters = () => {
+  return (
+    <>
+      <h1>Counter (starts at 1)</h1>
+      <CounterComponent initialCount={1} />
+      <h1>Counter (starts at 1000)</h1>
+      <CounterComponent initialCount={1000} />
+    </>
+  );
+};
+
+ReactDOM.render(<Counters />, document.getElementById("root"));
