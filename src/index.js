@@ -1,8 +1,36 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-const HelloWorldComponent = () => {
-  return <div>Hello World Function Component</div>;
-};
+class CounterComponent extends React.Component {
+  constructor(props) {
+    super(props);
 
-ReactDOM.render(<HelloWorldComponent />, document.getElementById("root"));
+    this.state = {
+      count: 0
+    };
+  }
+
+  add = () => {
+    this.setState({
+      count: this.state.count + 1
+    });
+  };
+
+  subtract = () => {
+    this.setState({
+      count: this.state.count - 1
+    });
+  };
+
+  render() {
+    return (
+      <div>
+        <div>{this.state.count}</div>
+        <button onClick={this.add}>Add</button>
+        <button onClick={this.subtract}>subtract</button>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<CounterComponent />, document.getElementById("root"));
